@@ -16,6 +16,11 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Set GitHub Path
+      run: echo "$GITHUB_ACTION_PATH" >> $GITHUB_PATH
+      shell: bash
+      env:
+        GITHUB_ACTION_PATH: ${{ github.action_path }}
     - name: Save script
       shell: bash
       run: mv deployer.sh $GITHUB_WORKSPACE
@@ -25,7 +30,7 @@ runs:
       if: ${{ inputs.language == 'javascript' }}
       uses: actions/setup-node@v4
     - name: Run deployer.sh
-      run: bash $GITHUB_WORKSPACE/deployer.sh
+      run: ls $GITHUB_ACTION_PATH && bash $GITHUB_ACTION_PATH/deployer.sh
       shell: bash
       env:
         LANGUAGE: ${{ inputs.language }}
