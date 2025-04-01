@@ -9,9 +9,15 @@ inputs:
     description: "Directory to work"
     required: true
     default: "."
+  output_directory:
+    description: "Output directory"
+    required: true
+    default: "dist"
 runs:
   using: "composite"
   steps:
+    - name: Checkout
+      uses: actions/checkout@v4
     - name: Add node
       if: ${{ inputs.language == 'javascript' }}
       uses: actions/setup-node@v4
@@ -21,3 +27,12 @@ runs:
       env:
         LANGUAGE: ${{ inputs.language }}
         DIRECTORY: ${{ inputs.directory }}
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: ${{ inputs.output_directory }}
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
+    - name: Setup Pages
+      uses: actions/configure-pages@v2
