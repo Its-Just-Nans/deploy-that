@@ -36,3 +36,8 @@ runs:
       uses: actions/deploy-pages@v4
     - name: Setup Pages
       uses: actions/configure-pages@v2
+    - name: Finish
+      shell: bash
+      run: echo "Finished deployment at $URL"
+      env:
+        URL: ${{ steps.deployment.outputs.page_url }}
