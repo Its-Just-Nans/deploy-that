@@ -16,13 +16,16 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Save script
+      shell: bash
+      run: mv deployer.sh $GITHUB_WORKSPACE
     - name: Checkout
       uses: actions/checkout@v4
     - name: Add node
       if: ${{ inputs.language == 'javascript' }}
       uses: actions/setup-node@v4
     - name: Run deployer.sh
-      run: ./deployer.sh
+      run: bash $GITHUB_WORKSPACE/deployer.sh
       shell: bash
       env:
         LANGUAGE: ${{ inputs.language }}
