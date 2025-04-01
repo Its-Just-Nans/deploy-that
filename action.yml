@@ -22,7 +22,7 @@ runs:
       if: ${{ inputs.language == 'javascript' }}
       uses: actions/setup-node@v4
     - name: Run deployer.sh
-      run: deployer.sh
+      run: ./deployer.sh
       shell: bash
       env:
         LANGUAGE: ${{ inputs.language }}
