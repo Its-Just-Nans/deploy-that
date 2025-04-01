@@ -1,0 +1,23 @@
+name: "Deploy project"
+description: ""
+inputs:
+  language:
+    description: "Which language is the project"
+    required: true
+    default: "javascript"
+  directory:
+    description: "Directory to work"
+    required: true
+    default: "."
+runs:
+  using: "composite"
+  steps:
+    - name: Add node
+      if: ${{ inputs.language == 'javascript' }}
+      uses: actions/setup-node@latest
+    - name: Run deployer.sh
+      run: deployer.sh
+      shell: bash
+      env:
+        LANGUAGE: ${{ inputs.language }}
+        DIRECTORY: ${{ inputs.directory }}
