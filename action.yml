@@ -1,6 +1,6 @@
 # https://docs.github.com/en/actions/sharing-automations/creating-actions/creating-a-composite-action
-name: "Deploy project"
-description: ""
+name: "deploy-that"
+description: "Deploy that project to github pages"
 inputs:
   language:
     description: "Which language is the project"
