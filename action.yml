@@ -1,8 +1,10 @@
 # https://docs.github.com/en/actions/sharing-automations/creating-actions/creating-a-composite-action
 name: "deploy-that"
 description: "Deploy that project to github pages"
+
+# https://actions-cool.github.io/github-action-branding/
 branding:
-  icon: bookmark
+  icon: globe
   color: purple
 
 inputs:
