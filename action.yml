@@ -3,7 +3,7 @@ name: "deploy-that"
 description: "Deploy that project to github pages"
 branding:
   icon: bookmark
-  color: green
+  color: purple
 
 inputs:
   language:
