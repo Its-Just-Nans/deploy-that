@@ -1,8 +1,10 @@
 # https://docs.github.com/en/actions/sharing-automations/creating-actions/creating-a-composite-action
 name: "deploy-that"
 description: "Deploy that project to github pages"
-icon: "send"
-color: "purple"
+branding:
+  icon: bookmark
+  color: green
+
 inputs:
   language:
     description: "Which language is the project"
@@ -16,6 +18,7 @@ inputs:
     description: "Output directory"
     required: true
     default: "dist"
+
 runs:
   using: "composite"
   steps:
