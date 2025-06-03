@@ -38,3 +38,5 @@ jobs:
 ## Used by
 
 - <https://github.com/Its-Just-Nans/domains>
+- <https://github.com/Its-Just-Nans/Its-Just-Nans.github.io>
+- <https://github.com/Its-Just-Nans/yakb>
