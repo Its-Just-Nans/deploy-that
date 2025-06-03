@@ -19,6 +19,9 @@ cd "$DIRECTORY" || (echo "Directory $DIRECTORY not found" && exit 1)
 if [ "$LANGUAGE" = "javascript" ]; then
     npm install
     npm run build
+elif [ "$LANGUAGE" = "repo" ]; then
+    # move everything to dist/ including hidden files except .git using rsync
+    rsync -av --exclude='.git' . dist/
 else
     echo "Unsupported language: $LANGUAGE"
     exit 1
