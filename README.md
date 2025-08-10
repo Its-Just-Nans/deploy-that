@@ -4,6 +4,8 @@ A github action to deploy your code to a webpage
 
 ## Usage
 
+See [action.yml](./action.yml) for the options
+
 ```yaml
 # Simple workflow for deploying static content to GitHub Pages
 name: Deploy static content to Pages
@@ -40,3 +42,4 @@ jobs:
 - <https://github.com/Its-Just-Nans/domains>
 - <https://github.com/Its-Just-Nans/Its-Just-Nans.github.io>
 - <https://github.com/Its-Just-Nans/yakb>
+- <https://github.com/Its-Just-Nans/golb>
