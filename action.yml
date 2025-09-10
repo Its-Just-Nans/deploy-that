@@ -44,6 +44,7 @@ runs:
       env:
         LANGUAGE: ${{ inputs.language }}
         DIRECTORY: ${{ inputs.directory }}
+        OUTPUT_DIR: ${{ inputs.output_directory }}
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:

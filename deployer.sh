@@ -12,6 +12,12 @@ if [ -z "$DIRECTORY" ]; then
     exit 1
 fi
 
+# check if the OUTPUT_DIR environment variable is set
+if [ -z "$OUTPUT_DIR" ]; then
+    echo "The OUTPUT_DIR environment variable is not set"
+    exit 1
+fi
+
 echo "Deploying the $LANGUAGE application..."
 cd "$DIRECTORY" || (echo "Directory $DIRECTORY not found" && exit 1)
 
@@ -21,10 +27,12 @@ if [ "$LANGUAGE" = "javascript" ]; then
     npm install
     echo "npm run build"
     npm run build
-elif [ "$LANGUAGE" = "repo" ]; then
-    # move everything to dist/ including hidden files except .git using rsync
-    echo "Creating dist/"
-    rsync -av --exclude='.git' . dist/
+    elif [ "$LANGUAGE" = "repo" ]; then
+    # move everything to $OUTPUT_DIR/ including hidden files except .git using rsync
+    echo "Creating $OUTPUT_DIR/"
+    rsync -av --exclude='.git' . "$OUTPUT_DIR/"
+    elif [ "$LANGUAGE" = "none" ]; then
+    echo "Doing nothing"
 else
     echo "Unsupported language: $LANGUAGE"
     exit 1
