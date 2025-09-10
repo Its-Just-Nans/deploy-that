@@ -20,6 +20,10 @@ inputs:
     description: "Output directory"
     required: true
     default: "dist"
+  should_checkout:
+    description: "Should checkout repository"
+    required: true
+    default: "true"
   checkout_submodules:
     description: "Should checkout with submodules"
     required: true
@@ -29,6 +33,7 @@ runs:
   using: "composite"
   steps:
     - name: Checkout
+      if: ${{ inputs.should_checkout == 'true' }}
       uses: actions/checkout@v4
       with:
         submodules: ${{ inputs.checkout_submodules }}
