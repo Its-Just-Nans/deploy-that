@@ -33,6 +33,14 @@ if [ "$LANGUAGE" = "javascript" ]; then
     rsync -av --exclude='.git' . "$OUTPUT_DIR/"
     elif [ "$LANGUAGE" = "none" ]; then
     echo "Doing nothing"
+    elif [ "$LANGUAGE" = "bash" ]; then
+    if [ -f ".github/workflows/build.sh" ]; then
+        echo "Running .github/workflows/build.sh"
+        bash .github/workflows/build.sh
+        elif [ -f "build.sh" ]; then
+        echo "Running build.sh"
+        bash build.sh
+    fi
 else
     echo "Unsupported language: $LANGUAGE"
     exit 1
