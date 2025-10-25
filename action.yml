@@ -41,6 +41,8 @@ runs:
     - name: Add node
       if: ${{ inputs.language == 'javascript' }}
       uses: actions/setup-node@v6
+      with:
+        node-version: current
     - name: Setup Pages
       uses: actions/configure-pages@v2
     - name: Run deployer.sh
