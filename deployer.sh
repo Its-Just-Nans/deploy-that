@@ -24,23 +24,23 @@ cd "$DIRECTORY" || (echo "Directory $DIRECTORY not found" && exit 1)
 # if $LANGUAGE is "javascript"
 if [ "$LANGUAGE" = "javascript" ]; then
     echo "npm install"
-    npm install
+    time npm install
     echo "npm run build"
-    npm run build
-    elif [ "$LANGUAGE" = "repo" ]; then
+    time npm run build
+elif [ "$LANGUAGE" = "repo" ]; then
     # move everything to $OUTPUT_DIR/ including hidden files except .git using rsync
     echo "Creating $OUTPUT_DIR/"
     rsync -av --exclude='.git' . "$OUTPUT_DIR/"
-    elif [ "$LANGUAGE" = "none" ]; then
+elif [ "$LANGUAGE" = "none" ]; then
     echo "Doing nothing"
-    elif [ "$LANGUAGE" = "bash" ]; then
-    if [ -f ".github/workflows/build.sh" ]; then
-        echo "Running .github/workflows/build.sh"
-        bash .github/workflows/build.sh
+elif [ "$LANGUAGE" = "bash" ]; then
+        if [ -f ".github/workflows/build.sh" ]; then
+            echo "Running .github/workflows/build.sh"
+            time bash .github/workflows/build.sh
         elif [ -f "build.sh" ]; then
-        echo "Running build.sh"
-        bash build.sh
-    fi
+            echo "Running build.sh"
+            time bash build.sh
+        fi
 else
     echo "Unsupported language: $LANGUAGE"
     exit 1
